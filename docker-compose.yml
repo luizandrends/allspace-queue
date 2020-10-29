@@ -1,0 +1,18 @@
+version: '3.7'
+
+volumes:
+  data:
+services:
+  backend:
+    build:
+      context: .
+      args:
+        uid: ${UID}
+    env_file:
+      - .env
+    volumes:
+      - '.:/app'
+    ports:
+      - '9228:9228'
+      - '3334:3334'
+    command: sh -c "yarn install && yarn dev:server"
