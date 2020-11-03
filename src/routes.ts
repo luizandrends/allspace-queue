@@ -1,9 +1,11 @@
 import { Router } from 'express';
 
-import SendMailController from './app/controllers/SendMailController';
+import SendForgotPasswordMailController from './app/controllers/SendForgotPasswordMailController';
+
+const sendForgotPasswordMailController = new SendForgotPasswordMailController();
 
 const routes = Router();
 
-routes.post('/mail/send', SendMailController.sendMail);
+routes.post('/forgot/password', sendForgotPasswordMailController.sendMail);
 
 export default routes;
